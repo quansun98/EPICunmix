@@ -1,0 +1,13 @@
+Package: EPICunmix
+Type: Package
+Title: A two-step Bayesian method for cell-type-specific gene-expression analysis
+Version: 0.0.1
+Author: Quan Sun <quansun@live.unc.edu>, Jia Wen <jia_wen@med.unc.edu>
+Description: EPIC-unmix is a two-step Bayesian method designed for cell-type-specific analysis built upon the bMIND method. Similarly, it can provide sample-level CTS expression from the bulk RNA-seq data, with the aid of a reference panel derived from single-cell/single-nuclei RNA-seq data. The second layer of Bayesian method, which distinguishes EPIC-unmix from bMIND, could adjust for the heterogeneity between reference and target samples, leading to more robust performance.
+biocViews:
+Depends: R (>= 3.5.0)
+Imports: nnls, doParallel, foreach, MCMCglmm, Matrix, edgeR, matrixcalc, BisqueRNA, parallel, Biobase, methods
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
