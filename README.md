@@ -96,7 +96,7 @@ We modified it to generate output that could be used in our second-step Bayesian
 
 The second-step Bayesian inference takes the output from `bMIND()` or `bmind_de()`.
 
-		epinc_unmix = run_epic_unmix(bulk, frac, posterior, out_prefix = "example/epic_unmix")
+		epic_unmix = run_epic_unmix(bulk, frac, posterior, out_prefix = "example/epic_unmix")
 
 
 
