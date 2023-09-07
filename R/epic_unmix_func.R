@@ -64,7 +64,7 @@ run_epic_unmix = function(bulk, frac, input_cts, outf = TRUE, out_prefix = NULL,
 		new_bulk_sub = bulk[rownames(bulk) %in% rownames(bp_cov),]
 
 		if((dim(new_bulk_sub)[1] == dim(bp)[1]) && (dim(bp)[1] == dim(bp_cov)[1])){
-			out_cts = bMIND(bulk_sub, frac = frac, profile = bp, covariance = bp_cov, nu = nu0 + nu1*iter, seed = seed)
+			out_cts = bMIND(new_bulk_sub, frac = frac, profile = bp, covariance = bp_cov, nu = nu0 + nu1*iter, seed = seed)
 		}else{
 			stop("bulk data dimension and priors are not the same, please check")
 		}
