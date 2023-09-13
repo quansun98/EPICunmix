@@ -48,6 +48,12 @@ For example, only keep the genes that are expressed in more than 80% of the samp
 		n_express = apply(bulk, 1, function(x) sum(x > 0))
 		bulk = bulk[(n_express > n*0.8),]
 
+### Read in cell type fraction
+
+In this example, we provided cell type fraction, a sample by cell type matrix.
+
+		frac <- read.table("example/fracs.csv", sep = ',', header=T, check.names=F) 
+
 ### Read in sc/snRNA-seq reference
 
 		sc_ref <- read.table("example/mat_train.csv",sep = ',',header=T,check.names=F)
