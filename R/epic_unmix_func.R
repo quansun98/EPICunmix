@@ -16,6 +16,7 @@
 #' informative is the distribution. The default is 50.
 #' @param nu1 hyper-parameter for the prior covariance matrix derived from the last iteration. The larger the nu1, the more informative after each iteration. Default is 50.
 #' @param seed random seed used. Default 1.
+#' @param ncore number of cores to run in parallel. The default is all available cores.
 #'
 #' @return Same as bMIND output, a list containing of the following elements:
 #' \item{A}{the deconvolved cell-type-specific gene expression (gene x cell type x sample). Note that if outf == TRUE, it will be written to files.}
@@ -38,7 +39,8 @@
 #' @importFrom matrixcalc is.positive.definite
 #' 
 
-run_epic_unmix = function(bulk, frac, input_cts, outf = TRUE, out_prefix = NULL, out_ct = NULL, nstop = 1, delta = 0.1, nu0 = 50, nu1 = 50, seed = 1){
+run_epic_unmix = function(bulk, frac, input_cts, outf = TRUE, out_prefix = NULL, out_ct = NULL, nstop = 1, 
+			  delta = 0.1, nu0 = 50, nu1 = 50, seed = 1, ncore = NULL){
 
 	current_cts = input_cts
 	for(iter in 1:nstop){
@@ -64,7 +66,7 @@ run_epic_unmix = function(bulk, frac, input_cts, outf = TRUE, out_prefix = NULL,
 		new_bulk_sub = bulk[rownames(bulk) %in% rownames(bp_cov),]
 
 		if((dim(new_bulk_sub)[1] == dim(bp)[1]) && (dim(bp)[1] == dim(bp_cov)[1])){
-			out_cts = bmind_de(new_bulk_sub, frac = frac, profile = bp, covariance = bp_cov, noRE = F, nu = nu0 + nu1*iter, seed = seed)
+			out_cts = bmind_de(new_bulk_sub, frac = frac, profile = bp, covariance = bp_cov, noRE = F, nu = nu0 + nu1*iter, seed = seed, ncore = ncore)
 		}else{
 			stop("bulk data dimension and priors are not the same, please check")
 		}

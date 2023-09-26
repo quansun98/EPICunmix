@@ -15,7 +15,8 @@ run_epic_unmix(
   delta = 0.1,
   nu0 = 50,
   nu1 = 50,
-  seed = 1
+  seed = 1,
+  ncore = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ informative is the distribution. The default is 50.}
 \item{nu1}{hyper-parameter for the prior covariance matrix derived from the last iteration. The larger the nu1, the more informative after each iteration. Default is 50.}
 
 \item{seed}{random seed used. Default 1.}
+
+\item{ncore}{number of cores to run in parallel. The default is all available cores.}
 }
 \value{
 Same as bMIND output, a list containing of the following elements:
