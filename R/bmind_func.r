@@ -395,7 +395,7 @@ get_prior = function(sc, sample = NULL, cell_type = NULL, meta_sc = NULL, filter
       if(length(id) > 0) cts[,j,k] = rowMeans(sc[, id, drop = F])
     }
     id = which(colMeans(is.na(cts[,j,])) == 0)
-    cts[,j,id] = log2(cpm(cts[,j,id]) + 1) # make it log2 CPM + 1
+    cts[,j,id] = log2(edgeR::cpm(cts[,j,id]) + 1) # make it log2 CPM + 1
   }
   
   cov = array(NA, dim = c(nrow(cts), K, K))
@@ -416,7 +416,7 @@ get_prior = function(sc, sample = NULL, cell_type = NULL, meta_sc = NULL, filter
   rownames(profile) = rownames(sc)
   colnames(profile) = cell_type
   for(i in cell_type) {
-    profile[,i] = log2(cpm(rowMeans(sc[, meta_sc$cell_type == i])) + 1)
+    profile[,i] = log2(edgeR::cpm(rowMeans(sc[, meta_sc$cell_type == i])) + 1)
   }
   
   return(list(profile = profile[gene_pd,], covariance = cov)) # ctsExp = cts, 

@@ -55,7 +55,7 @@ run_epic_unmix = function(bulk, frac, input_cts, outf = TRUE, out_prefix = NULL,
 		colnames(bp_cov) = colnames(current_cts$A)
 		for(i in 1:n_gene) {
     			tmp.cov = cov(t(current_cts$A[i,,] + 0.1), use = 'pairwise')
-    			if(is.positive.definite(tmp.cov)){
+    			if(matrixcalc::is.positive.definite(tmp.cov)){
        				bp_cov[i,,] = tmp.cov
     			}
 		}
