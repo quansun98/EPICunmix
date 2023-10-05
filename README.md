@@ -43,6 +43,7 @@ function which is also included in this package.
 We recommend performing QC of bulk data before inferring cell-type-specific (CTS) profiles.
 For example, only keep the genes that are expressed in more than 80% of the samples.
 
+		library(EPICunmix)
 		bulk = read.table("example/by_id.csv",sep=',',header=T, row.name=1,check.names=F)
 		n = dim(bulk)[2]
 		n_express = apply(bulk, 1, function(x) sum(x > 0))
